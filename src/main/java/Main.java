@@ -4,12 +4,12 @@ import com.mongodb.client.*;
 
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+import static com.mongodb.client.model.Filters.eq;
 import org.bson.Document;
 
 import java.io.IOException;
 import java.util.*;
 
-import static com.mongodb.client.model.Filters.eq;
 
 public class Main {
     public static void main(String args[]) throws IOException {
@@ -37,12 +37,11 @@ public class Main {
         MongoCursor<Document> cursor = collection.find().iterator();
         try {
             while (cursor.hasNext()) {
-                System.out.println(cursor.next());
+                System.out.println((Document)cursor.next());
             }
         }finally {
             cursor.close();
         }
-
         mongo.close();
     }
 
@@ -51,5 +50,9 @@ public class Main {
                 .append("IP",myLog.entryIP)
                 .append("Date", myLog.entryDate)
                 .append("Time", myLog.entryTimeSeconds);
+    }
+
+    private static LogEntry convertFromDoc(Document myDoc){
+        return null;
     }
 }
