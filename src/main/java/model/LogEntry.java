@@ -25,8 +25,8 @@ public class LogEntry {
     }
 
     private String getFormatTime(long seconds){
-        return  seconds/360 +
-                ":" + (((seconds % 3600) >= 600)?(seconds % 360)/60: "0" + (seconds % 360)/60) +
+        return  seconds/3600 +
+                ":" + (((seconds % 3600) >= 600)?(seconds % 3600)/60: "0" + (seconds % 3600)/60) +
                 ":" + (((seconds % 60) >= 10)? seconds % 60: "0" + seconds % 60);
     }
 
