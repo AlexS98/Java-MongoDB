@@ -1,10 +1,12 @@
+package main;
+
 import com.mongodb.*;
 
 import com.mongodb.client.*;
 
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 import static com.mongodb.client.model.Filters.eq;
+
+import model.LogEntry;
 import org.bson.Document;
 
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class Main {
                 new LogEntry("mySite5.com","192.168.0.5",new Date(),163)
         };
         /*
-        for (LogEntry log: logs) {
+        for (model.LogEntry log: logs) {
             collection.insertOne(convertToDoc(log));
         }
         for(int i = 0; i < logs.length; i++) {
