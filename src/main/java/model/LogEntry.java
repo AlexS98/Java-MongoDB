@@ -6,13 +6,13 @@ import java.util.Date;
 public class LogEntry {
     public String entryURL;
     public String entryIP;
-    public Date entryDate;
+    public long entryDate;
     public long entryTimeSeconds;
 
-    public LogEntry(String url, String ip, Date date, long time) throws IOException {
+    public LogEntry(String ip, String url, long date, long time) throws IOException {
         entryURL = url;
         entryIP = ip;
-        entryDate = (date == null)? new Date(): date;
+        entryDate = (date == 0)? new Date().getTime(): date;
         entryTimeSeconds = time;
     }
 
@@ -20,7 +20,7 @@ public class LogEntry {
     public String toString(){
         return "URL: " + entryURL +
                 "\nIP: " + entryIP +
-                "\nDate: " + entryDate.toString() +
+                "\nDate: " + new Date(entryDate).toString() +
                 "\nTime: " + getFormatTime(entryTimeSeconds);
     }
 
@@ -30,5 +30,24 @@ public class LogEntry {
                 ":" + (((seconds % 60) >= 10)? seconds % 60: "0" + seconds % 60);
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        final LogEntry other = (LogEntry) obj;
+        if ((this.entryURL == null) ? (other.entryURL != null) : !this.entryURL.equals(other.entryURL)) {
+            return false;
+        }
+        if ((this.entryIP == null) ? (other.entryIP != null) : !this.entryIP.equals(other.entryIP)) {
+            return false;
+        }
+        if (this.entryTimeSeconds != other.entryTimeSeconds) {
+            return false;
+        }
+        if (this.entryDate != other.entryDate) {
+            return false;
+        }
+        return true;
+    }
 }
