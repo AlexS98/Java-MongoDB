@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="816f1d97-1680-41d3-9379-440c31ce8fa6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/classes/handlers/ConverterTest.class" afterPath="$PROJECT_DIR$/out/test/classes/handlers/ConverterTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/handlers/ConverterTest.java" afterPath="$PROJECT_DIR$/src/test/handlers/ConverterTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -875,9 +873,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConverterTest - 2017.12.06 at 20h 55m 00s.xml">
-      <configuration name="ConverterTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ConverterTest - 2017.12.06 at 21h 05m 31s.xml">
       <configuration name="ConverterTest" configurationId="JUnit" />
     </history-entry>
@@ -900,6 +895,9 @@
       <configuration name="ConverterTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="ConverterTest - 2017.12.06 at 21h 15m 28s.xml">
+      <configuration name="ConverterTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConverterTest - 2017.12.06 at 21h 18m 21s.xml">
       <configuration name="ConverterTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="QueriesTest - 2017.12.06 at 21h 00m 44s.xml">
