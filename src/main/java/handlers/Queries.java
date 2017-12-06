@@ -24,7 +24,7 @@ public class Queries {
     }
 
     public Set<String> getIpByUrl(String url){
-        MongoCursor<Document> cursor = collection.find(eq("url", url)).iterator();
+        MongoCursor<Document> cursor = collection.find(eq("entryURL", url)).iterator();
         Set<String> ipList = new HashSet<String>();
         if (!cursor.hasNext()){
             ipList.add("ERROR! Not find any ip by url: " + url);
@@ -34,7 +34,7 @@ public class Queries {
             while (cursor.hasNext()) {
                 String log = cursor.next().toJson();
                 JSONObject jsonLog = new JSONObject(log);
-                ipList.add(jsonLog.getString("ip"));
+                ipList.add(jsonLog.getString("entryIP"));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class Queries {
     }
 
     public Set<String> getUrlByIp(String ip){
-        MongoCursor<Document> cursor = collection.find(eq("ip", ip)).iterator();
+        MongoCursor<Document> cursor = collection.find(eq("entryIP", ip)).iterator();
         Set<String> urlList = new HashSet<String>();
         if (!cursor.hasNext()){
             urlList.add("ERROR! Not find any url by ip: " + ip);
@@ -55,7 +55,7 @@ public class Queries {
             while (cursor.hasNext()) {
                 String log = cursor.next().toJson();
                 JSONObject jsonLog = new JSONObject(log);
-                urlList.add(jsonLog.getString("url"));
+                urlList.add(jsonLog.getString("entryURL"));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class Queries {
         Long firstTimeUnix = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").parse(firstTime).getTime();
         Long secondTimeUnix = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").parse(secondTime).getTime();
         MongoCursor<Document> cursor = collection
-                .find(and(gt("date",firstTimeUnix),lt("date",secondTimeUnix)))
+                .find(and(gt("entryDate",firstTimeUnix),lt("entryDate",secondTimeUnix)))
                 .iterator();
 
         Set<String> urlList = new HashSet<String>();
@@ -82,7 +82,7 @@ public class Queries {
             while (cursor.hasNext()) {
                 String log = cursor.next().toJson();
                 JSONObject jsonLog = new JSONObject(log);
-                urlList.add(jsonLog.getString("url"));
+                urlList.add(jsonLog.getString("entryURL"));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -95,8 +95,8 @@ public class Queries {
     public Iterator<Document> getTopUrlBySumDuration(){
         String map = "function() { emit(this.entryURL, this.entryTimeSeconds); }";
         String reduce = "function(key, values) {return Array.sum(values)}";
-        collection.mapReduce(map, reduce).collectionName("topUrlBySumDuratio").toCollection();
-        Iterator<Document> response = database.getCollection("topUrlBySumDuratio")
+        collection.mapReduce(map, reduce).collectionName("topUrlBySumDuration").toCollection();
+        Iterator<Document> response = database.getCollection("topUrlBySumDuration")
                 .find()
                 .sort(descending("value"))
                 .iterator();
