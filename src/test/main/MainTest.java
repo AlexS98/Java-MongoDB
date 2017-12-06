@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 public class MainTest {
     @Test
+    public void mainTest(){
+        Assert.assertEquals(Main.main(new String[]{}), 0);
+    }
+    @Test
     public void showResultTest() throws Exception {
         ArrayList<Document> list = new ArrayList<Document>();
         list.add(new Document("1", "22"));

@@ -32,22 +32,23 @@ public class LogEntry {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
+        boolean result = true;
         final LogEntry other = (LogEntry) obj;
+        if (obj == null) {
+            result =  false;
+        }
         if ((this.entryURL == null) ? (other.entryURL != null) : !this.entryURL.equals(other.entryURL)) {
-            return false;
+            result = false;
         }
         if ((this.entryIP == null) ? (other.entryIP != null) : !this.entryIP.equals(other.entryIP)) {
-            return false;
+            result = false;
         }
         if (this.entryTimeSeconds != other.entryTimeSeconds) {
-            return false;
+            result = false;
         }
         if (this.entryDate != other.entryDate) {
-            return false;
+            result = false;
         }
-        return true;
+        return result;
     }
 }

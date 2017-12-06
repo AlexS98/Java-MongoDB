@@ -67,6 +67,17 @@ public class QueriesTest {
     }
 
     @Test
+    public void getTopUrlByTimeTest() throws ParseException {
+        Set<String> expected = new HashSet<String>();
+        expected.add("github.com");
+        expected.add("travis-ci.org");
+        expected.add("www.google.com");
+        expected.add("www.codacy.com");
+        expected.add("www.youtube.com");
+        Assert.assertEquals(query.getUrlByTime("10.11.2017 00:00:00","30.11.2017 23:59:59"), expected);
+    }
+
+    @Test
     public void getTopUrlBySumDurationTest(){
         String expected = "Document{{_id=www.youtube.com, value=20927.0}}\n" +
                             "Document{{_id=travis-ci.org, value=16517.0}}\n" +
