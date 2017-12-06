@@ -4,11 +4,8 @@ import com.mongodb.*;
 
 import com.mongodb.client.*;
 
-import static com.mongodb.client.model.Filters.eq;
-
 import handlers.Converter;
 import handlers.Queries;
-import model.LogEntry;
 import org.bson.Document;
 
 import java.io.IOException;

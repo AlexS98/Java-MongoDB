@@ -18,8 +18,8 @@ import java.util.Set;
 import static main.Main.showResult;
 
 public class QueriesTest {
-    private MongoDatabase database = null;
-    private MongoCollection<Document> collection = null;
+    private MongoDatabase database;
+    private MongoCollection<Document> collection;
     private Queries query = null;
 
     @Before
